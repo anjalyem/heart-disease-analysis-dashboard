@@ -1,45 +1,243 @@
-# Heart Disease Analysis & Insights Dashboard
+# ❤️ Heart Disease Analysis & Insights Dashboard
 
-An interactive and visually compelling *Microsoft Excel Dashboard* developed to analyze key health metrics and lifestyle risk factors associated with heart disease. This project focuses on data cleaning, processing, and converting raw clinical records into actionable insights for healthcare data analysis.
+## 📌 Project Overview
 
----
+An end-to-end **Excel Data Analytics Project** focused on analyzing healthcare data to identify key factors associated with cardiovascular disease risks.
 
-## 📊 Project Overview
-Understanding the critical risk factors behind cardiovascular conditions is vital for preventative healthcare. This dashboard provides a comprehensive look into how demographics, medical history, and daily habits impact heart health.
+This interactive dashboard transforms raw patient health data into meaningful insights by combining:
 
-### 🔑 Key Insights Addressed:
-* *Prevalence & Demographics:* Tracking total patient count against heart disease diagnosis across different age groups and genders.
-* *Clinical Metrics:* Investigating the correlation between BMI categories (Normal, Obese, Overweight, Underweight) and overall health risk levels.
-* *Lifestyle Factors:* Measuring the measurable impact of smoking, diabetes, physical exercise, and alcohol consumption on cardiovascular health.
-* *Biometric Trends:* Analyzing age groups against physiological variables like cholesterol levels and investigating the relation between stress levels and average sleep hours.
+- Data Cleaning & Transformation
+- Power Query
+- Excel Data Model
+- DAX Measures
+- Pivot Analysis
+- Interactive Dashboard Design
 
----
-
-## 🛠️ Data Modeling & Technical Stack
-The entire lifecycle of this project was executed using *Advanced Microsoft Excel*:
-* *Data Cleaning & Transformation:* Utilized *Power Query* to handle missing parameters, format data structures, and establish data consistency.
-* *Analytical Computations:* Formulated conditional logics and data aggregations using advanced Excel formulas and *DAX* syntax.
-* *Data Aggregation:* Built structured *Pivot Tables* to segment complex health metrics effortlessly.
-* *Dynamic Interactivity:* Implemented interconnected *Slicers* (Gender, Age Group, Smoking, Diabetes, etc.) enabling seamless cross-filtering across all visual elements.
+The project helps analyze the relationship between **demographics, lifestyle habits, medical conditions, and heart disease risk factors**.
 
 ---
 
-## 📈 Dashboard Architecture & Visualizations
-The dashboard features an intuitive, unified user interface (UI) designed with structural grid layouts and cohesive color theory:
+## 📊 Dashboard Preview
 
-1. *Executive KPI Cards:* Quick-glance metrics representing Total Patients, Average BMI, Diabetes Rate, Total Heart Disease Cases, Smoking Percentage, and Average Sleep Hours.
-2. *Heart Disease Status:* A clean donut chart representing the current overall diagnostic ratio.
-3. *Cross-Demographic Analysis:* Stacked horizontal and vertical column charts analyzing Age Group vs Heart Disease and Gender vs Heart Disease.
-4. *Physiological Variations:* Line graphs tracking Age vs Cholesterol alongside comparative clusters exploring Stress vs Sleep vs Risk and Smoking vs Heart Disease.
+![Heart Disease Analysis Dashboard](image.png)
+
+*(Dashboard screenshot is included as image.png in the repository root)*
 
 ---
 
-## 💡 Key Business & Healthcare Takeaways
-* *Targeted Interventions:* High-risk cohorts can be quickly segmented by combining specific slicers (e.g., Middle-Aged + Smoker), aiding in proactive health consulting.
-* *Behavioral Insights:* Clear visual proofs demonstrating the direct drop in sleep hours corresponding to elevated risk profiles and stress levels.
+# 🛠️ Project Workflow
+
+## 1. Data Cleaning & Transformation (Power Query)
+
+The raw healthcare dataset was cleaned and prepared using **Power Query**.
+
+### Data Cleaning Tasks Performed:
+
+✅ **Missing Value Handling**
+- Filled missing values in important health attributes such as:
+  - BMI
+  - Sleep Hours
+  - Medical indicators
+
+using appropriate statistical replacement methods.
+
+✅ **Data Standardization**
+- Cleaned inconsistent categorical values.
+- Converted fields into standardized formats:
+
+Example:
+
+Before:
+```
+Yes / YES / Y
+No / NO / N
+```
+
+After:
+```
+Yes
+No
+```
+
+Applied for columns such as:
+
+- Smoking Status
+- Diabetes
+- Heart Disease Status
+
+✅ **Data Type Formatting**
+
+Corrected column data types:
+
+- Patient ID → Integer
+- Age → Whole Number
+- BMI → Decimal
+- Health Metrics → Numeric format
+
+✅ **Feature Engineering**
+
+Created new analytical columns:
+
+- Age Groups:
+  - Young
+  - Middle Age
+  - Old
+
+- Risk Categories:
+  - Low Risk
+  - Medium Risk
+  - High Risk
+
+These helped in better segmentation and visualization.
 
 ---
 
-## 📂 How to Explore the Repository
-* heart_disease.xlsx - Contains the full data model, Power Query processes, Pivot Tables, and the final interactive dashboard.
-* README.md - Documentation and project guide.
+# 2. Data Modeling & DAX Calculations (Power Pivot)
+
+The cleaned dataset was loaded into the **Excel Data Model**.
+
+Created custom DAX measures for dynamic KPI calculations.
+
+## 📌 Total Patients
+
+```DAX
+Total Patients =
+COUNT(heart_disease[PatientID])
+```
+
+## 📌 Heart Disease Cases
+
+```DAX
+Heart Disease Cases =
+CALCULATE(
+    COUNT(heart_disease[PatientID]),
+    heart_disease[Heart Disease Status] = "Yes"
+)
+```
+
+## 📌 Heart Disease Prevalence %
+
+```DAX
+Prevalence Rate =
+DIVIDE(
+    [Heart Disease Cases],
+    [Total Patients],
+    0
+)
+```
+
+## 📌 Average BMI
+
+```DAX
+Average BMI =
+AVERAGE(heart_disease[BMI])
+```
+
+---
+
+# 3. Data Analysis Using Pivot Tables
+
+Created multiple Pivot Tables to support dashboard visuals.
+
+Performed analysis on:
+
+- Heart Disease distribution by Gender
+- Age group risk comparison
+- Smoking impact analysis
+- Diabetes relationship with heart disease
+- Stress level vs Risk Category
+- Sleep pattern analysis
+- Cholesterol distribution
+
+---
+
+# 4. Interactive Dashboard Development
+
+Designed an interactive Excel dashboard using:
+
+### 📊 Visualizations
+
+- KPI Cards
+- Donut Charts
+- Bar Charts
+- Column Charts
+- Line Charts
+
+### 🎛️ Interactive Filters
+
+Added slicers for:
+
+- Gender
+- Age Group
+- Smoking Status
+- Diabetes Status
+- Risk Level
+
+Users can dynamically filter the dashboard and explore different health patterns.
+
+---
+
+# 🔍 Key Insights Generated
+
+### 1. Age Impact
+
+Older age groups showed a higher occurrence of heart disease compared to younger groups.
+
+### 2. Lifestyle Risk Factors
+
+Patients with:
+
+- High stress levels
+- Reduced sleep duration
+- Smoking habits
+
+showed higher risk patterns.
+
+### 3. Medical Conditions
+
+Patients with conditions like:
+
+- Diabetes
+- High cholesterol
+
+showed increased probability of heart disease indicators.
+
+---
+
+# 🧰 Tools & Technologies Used
+
+| Tool | Purpose |
+|---|---|
+| Microsoft Excel | Dashboard Development |
+| Power Query | Data Cleaning & Transformation |
+| Power Pivot | Data Modeling |
+| DAX | KPI Calculations |
+| Pivot Tables | Data Analysis |
+| Excel Charts | Visualization |
+
+---
+
+# 📂 Repository Structure
+
+```
+Heart-Disease-Analysis-Dashboard
+│
+├── heart_disease_analysis_dashboard.xlsx
+│
+├── image.png
+│
+└── README.md
+```
+
+---
+
+# 🎯 Project Outcome
+
+This project demonstrates practical skills in:
+
+- Data Cleaning
+- Business Intelligence Reporting
+- Healthcare Analytics
+- Dashboard Development
+- DAX Formula Creation
+- Data Storytelling
