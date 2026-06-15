@@ -19,7 +19,7 @@ The project helps analyze the relationship between **demographics, lifestyle hab
 
 ## 📊 Dashboard Preview
 
-![Heart Disease Analysis Dashboard](image.png)
+
 
 *(Dashboard screenshot is included as image.png in the repository root)*
 
